@@ -80,11 +80,11 @@ devDependencies:
     specifier: ^3.1.4
     version: 3.1.4
   fp-ts:
-    specifier: ^2.10.0
-    version: 2.10.0
+    specifier: ^2.14.0
+    version: 2.14.0
   fp-ts-laws:
     specifier: ^0.3.0
-    version: 0.3.0(fast-check@3.1.4)(fp-ts@2.10.0)
+    version: 0.3.0(fast-check@3.1.4)(fp-ts@2.14.0)
   glob:
     specifier: ^8.0.3
     version: 8.0.3
@@ -3460,11 +3460,11 @@ packages:
     dependencies:
       chalk: 2.4.2
       doctrine: 3.0.0
-      fp-ts: 2.10.0
+      fp-ts: 2.14.0
       fs-extra: 7.0.1
       glob: 7.2.3
-      io-ts: 2.2.18(fp-ts@2.10.0)
-      logging-ts: 0.3.4(fp-ts@2.10.0)
+      io-ts: 2.2.18(fp-ts@2.14.0)
+      logging-ts: 0.3.4(fp-ts@2.14.0)
       markdown-toc: 1.2.0
       prettier: 2.2.1
       rimraf: 2.7.1
@@ -4162,18 +4162,18 @@ packages:
       mime-types: 2.1.35
     dev: true
 
-  /fp-ts-laws@0.3.0(fast-check@3.1.4)(fp-ts@2.10.0):
+  /fp-ts-laws@0.3.0(fast-check@3.1.4)(fp-ts@2.14.0):
     resolution: {integrity: sha512-uCLBnZq429UDYIx7TDsKmIOXQvgVfEFJMDBbJ2OljpW19cCEF+UgwoGnTfq6AYkHofFlkd6t0p3a9HB1OXTiaA==}
     peerDependencies:
       fast-check: ^2.6.0
       fp-ts: ^2.0.0
     dependencies:
       fast-check: 3.1.4
-      fp-ts: 2.10.0
+      fp-ts: 2.14.0
     dev: true
 
-  /fp-ts@2.10.0:
-    resolution: {integrity: sha512-FC2VYweD6QJ5qIKq2wGXRuTtMxIRrXqLlIhRDnxVisbmjEEENHPyf6vrQ9Tdj5Pha1o/SbdYBrfANpvaUxW0dg==}
+  /fp-ts@2.14.0:
+    resolution: {integrity: sha512-QLagLSYAgMA00pZzUzeksH/78Sd14y7+Gc2A8Yaja3/IpGOFMdm/gYBuDMxYqLsJ58iT5lz+bJb953RAeFfp1A==}
     dev: true
 
   /fragment-cache@0.2.1:
@@ -4659,12 +4659,12 @@ packages:
       side-channel: 1.0.4
     dev: true
 
-  /io-ts@2.2.18(fp-ts@2.10.0):
+  /io-ts@2.2.18(fp-ts@2.14.0):
     resolution: {integrity: sha512-3JxUUzRtPQPs5sOwB7pW0+Xb54nOzqA6M1sRB1hwgsRmkWMeGTjtOrCynGTJhIj+mBLUj2S37DAq2+BrPh9kTQ==}
     peerDependencies:
       fp-ts: ^2.5.0
     dependencies:
-      fp-ts: 2.10.0
+      fp-ts: 2.14.0
     dev: true
 
   /is-absolute@1.0.0:
@@ -5924,12 +5924,12 @@ packages:
       wrap-ansi: 6.2.0
     dev: true
 
-  /logging-ts@0.3.4(fp-ts@2.10.0):
+  /logging-ts@0.3.4(fp-ts@2.14.0):
     resolution: {integrity: sha512-TJYaSB88h8N9/ojruoGZgJeQEwpLmDNWpGf03hDgjPNo5QnwO28vkSH/H8/9aMoX8zeShVJUOnKRM6zs5ifR0A==}
     peerDependencies:
       fp-ts: ^2.0.5
     dependencies:
-      fp-ts: 2.10.0
+      fp-ts: 2.14.0
     dev: true
 
   /lower-case@2.0.2:

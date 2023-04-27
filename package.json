@@ -100,7 +100,7 @@
     "eslint-plugin-unused-imports": "^2.0.0",
     "expect-type": "^0.15.0",
     "fast-check": "^3.1.4",
-    "fp-ts": "^2.10.0",
+    "fp-ts": "^2.14.0",
     "fp-ts-laws": "^0.3.0",
     "glob": "^8.0.3",
     "husky": "^8.0.0",
