@@ -12,7 +12,7 @@ module.exports = {
     },
   },
   moduleNameMapper: {
-    '^schemata-ts$': '<rootDir>/src/index.ts',
-    '^schemata-ts/(.*)$': '<rootDir>/src/$1',
+    '^@jacob-alford/bifold-traverse$': '<rootDir>/src/index.ts',
+    '^@jacob-alford/bifold-traverse/(.*)$': '<rootDir>/src/$1',
   },
 }
