@@ -63,6 +63,9 @@ export const bireduce = <A, B, C>(c: C, f: (c: C, a: A) => C, g: (c: C, b: B) =>
 ): C => bireduce_(fa, c, f, g)
 
 /**
+ * Note: ReadonlyTuple is defined backwards, and the first mapping function takes the
+ * second element, i.e. f: (a: A) => S, g: (b: B) => S
+ *
  * @since 1.0.0
  * @category Instance Methods
  */
