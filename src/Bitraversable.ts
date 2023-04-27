@@ -11,6 +11,7 @@ import {
   Applicative3,
   Applicative4,
 } from 'fp-ts/Applicative'
+import { Bifunctor, Bifunctor2 } from 'fp-ts/Bifunctor'
 import {
   HKT,
   HKT2,
@@ -28,7 +29,7 @@ import {
  * @since 1.0.0
  * @category Typeclass
  */
-export interface Bitraversable<T> extends Bifoldable<T> {
+export interface Bitraversable<T> extends Bifoldable<T>, Bifunctor<T> {
   readonly bitraverse: {
     <F extends URIS4>(F: Applicative4<F>): <S, R, E, A, B, C, D>(
       fa: HKT2<T, A, B>,
@@ -79,7 +80,7 @@ export interface Bitraversable<T> extends Bifoldable<T> {
  * @since 1.0.0
  * @category Typeclass
  */
-export interface Bitraversable2<T extends URIS2> extends Bifoldable2<T> {
+export interface Bitraversable2<T extends URIS2> extends Bifoldable2<T>, Bifunctor2<T> {
   readonly bitraverse: {
     <F extends URIS4>(F: Applicative4<F>): <S, R, E, A, B, C, D>(
       fa: Kind2<T, A, B>,

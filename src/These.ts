@@ -109,7 +109,6 @@ export const bifoldMap: <S>(
  * @category Instances
  */
 export const Bifoldable: Bifoldable2<Th.URI> = {
-  ...Th.Bifunctor,
   bireduceRight: bireduceRight_,
   bireduce: bireduce_,
   bifoldMap: bifoldMap_,
@@ -143,6 +142,7 @@ export const bitraverse: PipeableBitraverse<Th.URI> = <F>(F: Applicative<F>) => 
  * @category Instances
  */
 export const Bitraversable: Bitraversable2<Th.URI> = {
+  ...Th.Bifunctor,
   ...Bifoldable,
   bisequence,
   bitraverse: bitraverse_,

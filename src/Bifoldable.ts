@@ -3,7 +3,6 @@
  *
  * @since 1.0.0
  */
-import { Bifunctor, Bifunctor2 } from 'fp-ts/Bifunctor'
 import { BooleanAlgebra } from 'fp-ts/BooleanAlgebra'
 import { identity } from 'fp-ts/function'
 import { HKT2, Kind2, URIS2 } from 'fp-ts/HKT'
@@ -13,7 +12,7 @@ import { Monoid } from 'fp-ts/Monoid'
  * @since 1.0.0
  * @category Typeclass
  */
-export interface Bifoldable<F> extends Bifunctor<F> {
+export interface Bifoldable<F> {
   readonly bireduce: <A, B, C>(
     fa: HKT2<F, A, B>,
     b: C,
@@ -35,7 +34,7 @@ export interface Bifoldable<F> extends Bifunctor<F> {
  * @since 1.0.0
  * @category Typeclass
  */
-export interface Bifoldable2<F extends URIS2> extends Bifunctor2<F> {
+export interface Bifoldable2<F extends URIS2> {
   readonly bireduce: <A, B, C>(
     fa: Kind2<F, A, B>,
     b: C,
