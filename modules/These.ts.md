@@ -1,6 +1,6 @@
 ---
 title: These.ts
-nav_order: 9
+nav_order: 10
 parent: Modules
 ---
 
@@ -75,7 +75,17 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const bisequence: any
+export declare const bisequence: {
+  <F>(F: Applicative4<F>): <S, R, E, A, B>(
+    fga: Th.These<Kind4<F, S, R, E, A>, Kind4<F, S, R, E, B>>
+  ) => Kind4<F, S, R, E, Th.These<A, B>>
+  <F>(F: Applicative3<F>): <R, E, A, B>(
+    fga: Th.These<Kind3<F, R, E, A>, Kind3<F, R, E, B>>
+  ) => Kind3<F, R, E, Th.These<A, B>>
+  <F>(F: Applicative2<F>): <E, A, B>(fga: Th.These<Kind2<F, E, A>, Kind2<F, E, B>>) => Kind2<F, E, Th.These<A, B>>
+  <F>(F: Applicative1<F>): <A, B>(fga: Th.These<Kind<F, A>, Kind<F, B>>) => Kind<F, Th.These<A, B>>
+  <F>(F: Applicative<F>): <A, B>(fga: Th.These<HKT<F, A>, HKT<F, B>>) => HKT<'These', Th.These<A, B>>
+}
 ```
 
 Added in v1.0.0
@@ -85,7 +95,7 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const bitraverse: any
+export declare const bitraverse: PipeableBitraverse<'These'>
 ```
 
 Added in v1.0.0
@@ -97,7 +107,7 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const Bifoldable: any
+export declare const Bifoldable: Bifoldable2<'These'>
 ```
 
 Added in v1.0.0
@@ -107,7 +117,7 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const Bitraversable: any
+export declare const Bitraversable: Bitraversable2<'These'>
 ```
 
 Added in v1.0.0
@@ -119,7 +129,7 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const bifold: any
+export declare const bifold: <M>(M: Monoid<M>) => (fa: Th.These<M, M>) => M
 ```
 
 Added in v1.0.0

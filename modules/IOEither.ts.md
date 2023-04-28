@@ -1,15 +1,14 @@
 ---
 title: IOEither.ts
-nav_order: 4
+nav_order: 5
 parent: Modules
 ---
 
 ## IOEither overview
 
-`bisequence` and `bitraverse` for `TaskEither`.
+`bisequence` and `bitraverse` for `IOEither`.
 
-_Note: TaskEither has neither `Bifoldable` nor `Bitraversable` instances due to the
-nature of task_
+_Note: IOEither has neither `Bifoldable` nor `Bitraversable` instances_
 
 Added in v1.0.0
 

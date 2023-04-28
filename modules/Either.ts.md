@@ -32,7 +32,17 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const bisequence: any
+export declare const bisequence: {
+  <F>(F: Applicative4<F>): <S, R, E, A, B>(
+    fga: E.Either<Kind4<F, S, R, E, A>, Kind4<F, S, R, E, B>>
+  ) => Kind4<F, S, R, E, E.Either<A, B>>
+  <F>(F: Applicative3<F>): <R, E, A, B>(
+    fga: E.Either<Kind3<F, R, E, A>, Kind3<F, R, E, B>>
+  ) => Kind3<F, R, E, E.Either<A, B>>
+  <F>(F: Applicative2<F>): <E, A, B>(fga: E.Either<Kind2<F, E, A>, Kind2<F, E, B>>) => Kind2<F, E, E.Either<A, B>>
+  <F>(F: Applicative1<F>): <A, B>(fga: E.Either<Kind<F, A>, Kind<F, B>>) => Kind<F, E.Either<A, B>>
+  <F>(F: Applicative<F>): <A, B>(fga: E.Either<HKT<F, A>, HKT<F, B>>) => HKT<'Either', E.Either<A, B>>
+}
 ```
 
 Added in v1.0.0
@@ -42,7 +52,7 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const bitraverse: any
+export declare const bitraverse: PipeableBitraverse<'Either'>
 ```
 
 Added in v1.0.0
@@ -54,7 +64,7 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const Bifoldable: any
+export declare const Bifoldable: Bifoldable2<'Either'>
 ```
 
 Added in v1.0.0
@@ -64,7 +74,7 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const Bitraversable: any
+export declare const Bitraversable: Bitraversable2<'Either'>
 ```
 
 Added in v1.0.0

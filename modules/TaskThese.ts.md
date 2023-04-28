@@ -1,14 +1,14 @@
 ---
 title: TaskThese.ts
-nav_order: 8
+nav_order: 9
 parent: Modules
 ---
 
 ## TaskThese overview
 
-`bisequence` and `bitraverse` for `TaskEither`.
+`bisequence` and `bitraverse` for `TaskThese`.
 
-_Note: TaskEither has neither `Bifoldable` nor `Bitraversable` instances due to the
+_Note: TaskThese has neither `Bifoldable` nor `Bitraversable` instances due to the
 nature of task_
 
 Added in v1.0.0

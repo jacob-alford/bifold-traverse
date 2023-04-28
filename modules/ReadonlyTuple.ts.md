@@ -1,6 +1,6 @@
 ---
 title: ReadonlyTuple.ts
-nav_order: 5
+nav_order: 6
 parent: Modules
 ---
 
@@ -74,7 +74,17 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const bisequence: any
+export declare const bisequence: {
+  <F>(F: Applicative4<F>): <S, R, E, A, B>(
+    fga: readonly [Kind4<F, S, R, E, B>, Kind4<F, S, R, E, A>]
+  ) => Kind4<F, S, R, E, readonly [B, A]>
+  <F>(F: Applicative3<F>): <R, E, A, B>(
+    fga: readonly [Kind3<F, R, E, B>, Kind3<F, R, E, A>]
+  ) => Kind3<F, R, E, readonly [B, A]>
+  <F>(F: Applicative2<F>): <E, A, B>(fga: readonly [Kind2<F, E, B>, Kind2<F, E, A>]) => Kind2<F, E, readonly [B, A]>
+  <F>(F: Applicative1<F>): <A, B>(fga: readonly [Kind<F, B>, Kind<F, A>]) => Kind<F, readonly [B, A]>
+  <F>(F: Applicative<F>): <A, B>(fga: readonly [HKT<F, B>, HKT<F, A>]) => HKT<'ReadonlyTuple', readonly [B, A]>
+}
 ```
 
 Added in v1.0.0
@@ -84,7 +94,7 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const bitraverse: any
+export declare const bitraverse: PipeableBitraverse<'ReadonlyTuple'>
 ```
 
 Added in v1.0.0
@@ -96,7 +106,7 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const Bifoldable: any
+export declare const Bifoldable: Bifoldable2<'ReadonlyTuple'>
 ```
 
 Added in v1.0.0
@@ -106,7 +116,7 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const Bitraversable: any
+export declare const Bitraversable: Bitraversable2<'ReadonlyTuple'>
 ```
 
 Added in v1.0.0
@@ -118,7 +128,7 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const bifold: any
+export declare const bifold: <M>(M: Monoid<M>) => (fa: readonly [M, M]) => M
 ```
 
 Added in v1.0.0

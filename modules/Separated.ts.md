@@ -1,6 +1,6 @@
 ---
 title: Separated.ts
-nav_order: 6
+nav_order: 7
 parent: Modules
 ---
 
@@ -75,7 +75,19 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const bisequence: any
+export declare const bisequence: {
+  <F>(F: Applicative4<F>): <S, R, E, A, B>(
+    fga: Sep.Separated<Kind4<F, S, R, E, A>, Kind4<F, S, R, E, B>>
+  ) => Kind4<F, S, R, E, Sep.Separated<A, B>>
+  <F>(F: Applicative3<F>): <R, E, A, B>(
+    fga: Sep.Separated<Kind3<F, R, E, A>, Kind3<F, R, E, B>>
+  ) => Kind3<F, R, E, Sep.Separated<A, B>>
+  <F>(F: Applicative2<F>): <E, A, B>(
+    fga: Sep.Separated<Kind2<F, E, A>, Kind2<F, E, B>>
+  ) => Kind2<F, E, Sep.Separated<A, B>>
+  <F>(F: Applicative1<F>): <A, B>(fga: Sep.Separated<Kind<F, A>, Kind<F, B>>) => Kind<F, Sep.Separated<A, B>>
+  <F>(F: Applicative<F>): <A, B>(fga: Sep.Separated<HKT<F, A>, HKT<F, B>>) => HKT<'Separated', Sep.Separated<A, B>>
+}
 ```
 
 Added in v1.0.0
@@ -85,7 +97,7 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const bitraverse: any
+export declare const bitraverse: PipeableBitraverse<'Separated'>
 ```
 
 Added in v1.0.0
@@ -97,7 +109,7 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const Bifoldable: any
+export declare const Bifoldable: Bifoldable2<'Separated'>
 ```
 
 Added in v1.0.0
@@ -107,7 +119,7 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const Bitraversable: any
+export declare const Bitraversable: Bitraversable2<'Separated'>
 ```
 
 Added in v1.0.0
@@ -119,7 +131,7 @@ Added in v1.0.0
 **Signature**
 
 ```ts
-export declare const bifold: any
+export declare const bifold: <M>(M: Monoid<M>) => (fa: Sep.Separated<M, M>) => M
 ```
 
 Added in v1.0.0
