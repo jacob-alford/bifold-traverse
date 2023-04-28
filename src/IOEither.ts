@@ -1,8 +1,7 @@
 /**
- * `bisequence` and `bitraverse` for `TaskEither`.
+ * `bisequence` and `bitraverse` for `IOEither`.
  *
- * _Note: TaskEither has neither `Bifoldable` nor `Bitraversable` instances due to the
- * nature of task_
+ * _Note: IOEither has neither `Bifoldable` nor `Bitraversable` instances_
  *
  * @since 1.0.0
  */

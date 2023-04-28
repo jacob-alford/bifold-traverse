@@ -5,8 +5,8 @@
     "noEmit": true,
     "strict": true,
     "paths": {
-      "schemata-ts": ["./src/index.ts"],
-      "schemata-ts/*": ["./src/*"]
+      "@jacob-alford/bifold-traverse": ["./src/index.ts"],
+      "@jacob-alford/bifold-traverse/*": ["./src/*"]
     }
   }
 }
