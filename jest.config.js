@@ -1,5 +1,5 @@
 module.exports = {
-  collectCoverageFrom: ['src/**', '!src/schemata.ts'],
+  collectCoverageFrom: ['src/**', '!src/index.ts'],
   preset: 'ts-jest',
   testEnvironment: 'node',
   testMatch: ['<rootDir>/tests/**/*.ts'],
