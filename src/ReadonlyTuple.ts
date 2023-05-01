@@ -79,6 +79,7 @@ export const bifoldMap = <S>(S: Semigroup<S>) => <A, B>(
  * @category Instances
  */
 export const Bifoldable: Bifoldable2<RTup.URI> = {
+  URI: RTup.URI,
   bireduceRight: bireduceRight_,
   bireduce: bireduce_,
   bifoldMap: bifoldMap_,

@@ -109,6 +109,7 @@ export const bifoldMap: <S>(
  * @category Instances
  */
 export const Bifoldable: Bifoldable2<Th.URI> = {
+  URI: Th.URI,
   bireduceRight: bireduceRight_,
   bireduce: bireduce_,
   bifoldMap: bifoldMap_,

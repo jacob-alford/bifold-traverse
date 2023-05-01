@@ -13,6 +13,7 @@ import { Monoid } from 'fp-ts/Monoid'
  * @category Typeclass
  */
 export interface Bifoldable<F> {
+  readonly URI: F
   readonly bireduce: <A, B, C>(
     fa: HKT2<F, A, B>,
     b: C,
@@ -35,6 +36,7 @@ export interface Bifoldable<F> {
  * @category Typeclass
  */
 export interface Bifoldable2<F extends URIS2> {
+  readonly URI: F
   readonly bireduce: <A, B, C>(
     fa: Kind2<F, A, B>,
     b: C,
