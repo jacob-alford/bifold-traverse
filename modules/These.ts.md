@@ -40,6 +40,20 @@ export declare const bifoldMap: <S>(
 ) => <A, B>(f: (a: A) => S, g: (b: B) => S) => (fa: Th.These<A, B>) => S
 ```
 
+**Example**
+
+```ts
+import { bifoldMap } from '@jacob-alford/bifold-traverse/These'
+import * as Str from 'fp-ts/string'
+import * as Th from 'fp-ts/These'
+
+const uppercaseFold: (fa: Th.These<string, string>) => string = bifoldMap(Str.Monoid)(Str.toLowerCase, Str.toUpperCase)
+
+assert.deepStrictEqual(uppercaseFold(Th.left('Foo')), 'foo')
+assert.deepStrictEqual(uppercaseFold(Th.right('bar')), 'BAR')
+assert.deepStrictEqual(uppercaseFold(Th.both('foo', 'bar')), 'fooBAR')
+```
+
 Added in v1.0.0
 
 ## bireduce

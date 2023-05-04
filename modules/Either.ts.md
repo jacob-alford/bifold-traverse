@@ -55,6 +55,37 @@ Added in v1.0.0
 export declare const bitraverse: PipeableBitraverse<'Either'>
 ```
 
+**Example**
+
+```ts
+import { bitraverse } from '@jacob-alford/bifold-traverse/Either'
+import * as E from 'fp-ts/Either'
+import * as O from 'fp-ts/Option'
+import { pipe } from 'fp-ts/function'
+
+type WideEither = E.Either<string | Error, string | number>
+type NarrowedEither = E.Either<Error, number>
+
+const e1: WideEither = E.left('string')
+const e2: WideEither = E.left(new Error('error'))
+const e3: WideEither = E.right('string')
+const e4: WideEither = E.right(1)
+
+const narrowEither: (e: WideEither) => O.Option<NarrowedEither> = bitraverse(O.Applicative)(
+  O.fromPredicate((s): s is Error => s instanceof Error),
+  O.fromPredicate((s): s is number => typeof s === 'number')
+)
+
+const r1 = pipe(e1, narrowEither)
+assert.deepStrictEqual(r1, O.none)
+const r2 = pipe(e2, narrowEither)
+assert.deepStrictEqual(r2, O.some(E.left(new Error('error'))))
+const r3 = pipe(e3, narrowEither)
+assert.deepStrictEqual(r3, O.none)
+const r4 = pipe(e4, narrowEither)
+assert.deepStrictEqual(r4, O.some(E.right(1)))
+```
+
 Added in v1.0.0
 
 # Instances

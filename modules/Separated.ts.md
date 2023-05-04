@@ -100,6 +100,93 @@ Added in v1.0.0
 export declare const bitraverse: PipeableBitraverse<'Separated'>
 ```
 
+**Example**
+
+```ts
+import { bitraverse } from '../../src/Separated'
+import * as E from 'fp-ts/Either'
+import * as O from 'fp-ts/Option'
+import * as RA from 'fp-ts/ReadonlyArray'
+import * as Sep from 'fp-ts/Separated'
+import { flow } from 'fp-ts/function'
+
+type RelevantError = { readonly _tag: 'relevant-error'; message: string }
+
+type IrrelevantError = { readonly _tag: 'irrelevant-error' }
+
+type CriticalError = { readonly _tag: 'critical-error'; reason: string }
+
+type Error = RelevantError | IrrelevantError | CriticalError
+
+const relevantError: (message: string) => Error = (message) => ({
+  _tag: 'relevant-error',
+  message,
+})
+const irrelevantError: Error = { _tag: 'irrelevant-error' }
+
+const criticalError: (reason: string) => Error = (reason) => ({
+  _tag: 'critical-error',
+  reason,
+})
+
+const parseSemiList: (s: string) => O.Option<ReadonlyArray<string>> = flow(
+  O.fromPredicate((s) => /^((.*);)(.*)(;?)$/.test(s)),
+  O.map((s) => s.split(';'))
+)
+
+const collectErrorsAndParseSuccesses: (
+  fa: Sep.Separated<ReadonlyArray<Error>, ReadonlyArray<string>>
+) => E.Either<CriticalError, Sep.Separated<ReadonlyArray<RelevantError>, ReadonlyArray<string>>> = bitraverse(
+  E.Applicative
+)(
+  flow(
+    E.traverseArray(
+      E.fromPredicate(
+        (err): err is RelevantError | IrrelevantError => err._tag !== 'critical-error',
+        (err) => (err._tag === 'critical-error' ? `Error: ${err.reason}` : `Error`)
+      )
+    ),
+    E.bimap(
+      (err) => ({ _tag: 'critical-error', reason: err }),
+      RA.filter((err): err is RelevantError => err._tag === 'relevant-error')
+    )
+  ),
+  flow(
+    O.traverseArray(parseSemiList),
+    O.map(RA.flatten),
+    E.fromOption(() => ({
+      _tag: 'critical-error',
+      reason: 'failed to parse string',
+    }))
+  )
+)
+
+assert.deepStrictEqual(
+  collectErrorsAndParseSuccesses(
+    Sep.separated(
+      [relevantError('first error'), relevantError('second error'), irrelevantError],
+      ['foo;bar;baz', 'qux;quux;quuz']
+    )
+  ),
+  E.right(
+    Sep.separated(
+      [relevantError('first error'), relevantError('second error')],
+      ['foo', 'bar', 'baz', 'qux', 'quux', 'quuz']
+    )
+  )
+)
+
+assert.deepStrictEqual(
+  collectErrorsAndParseSuccesses(
+    Sep.separated(
+      [relevantError('first error'), relevantError('second error'), criticalError('critical error')],
+      ['foo;bar;baz', 'qux;quux;quuz']
+    )
+  ),
+  E.left(criticalError('Error: critical error'))
+)
+```
+
 Added in v1.0.0
 
 # Instances

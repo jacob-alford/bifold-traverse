@@ -32,6 +32,7 @@ Added in v1.0.0
 
 ```ts
 export interface Bifoldable<F> {
+  readonly URI: F
   readonly bireduce: <A, B, C>(fa: HKT2<F, A, B>, b: C, f: (c: C, a: A) => C, g: (c: C, b: B) => C) => C
   readonly bireduceRight: <A, B, C>(fa: HKT2<F, A, B>, b: C, f: (a: A, c: C) => C, g: (b: B, c: C) => C) => C
   readonly bifoldMap: <M>(M: Monoid<M>) => <A, B>(fa: HKT2<F, A, B>, f: (a: A) => M, g: (b: B) => M) => M
@@ -46,6 +47,7 @@ Added in v1.0.0
 
 ```ts
 export interface Bifoldable2<F extends URIS2> {
+  readonly URI: F
   readonly bireduce: <A, B, C>(fa: Kind2<F, A, B>, b: C, f: (c: C, a: A) => C, g: (c: C, b: B) => C) => C
   readonly bireduceRight: <A, B, C>(fa: Kind2<F, A, B>, b: C, f: (a: A, c: C) => C, g: (b: B, c: C) => C) => C
   readonly bifoldMap: <M>(M: Monoid<M>) => <A, B>(fa: Kind2<F, A, B>, f: (a: A) => M, g: (b: B) => M) => M
