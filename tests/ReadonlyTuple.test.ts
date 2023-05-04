@@ -1,7 +1,9 @@
 import * as Ap from 'fp-ts/Applicative'
+import * as E from 'fp-ts/Either'
 import { pipe } from 'fp-ts/function'
 import { tuple } from 'fp-ts/function'
 import * as O from 'fp-ts/Option'
+import * as RA from 'fp-ts/ReadonlyArray'
 import * as Str from 'fp-ts/string'
 
 import {
@@ -61,6 +63,16 @@ describe('These', () => {
       const _ = pipe(tuple('a', 'b'), testNN)
       expect(_).toEqual(O.none)
     })
+  })
+  test('bitraverse applicative validation', () => {
+    const result = pipe(
+      tuple('bar', 'foo'),
+      bitraverse(E.getApplicativeValidation(RA.getSemigroup<string>()))(
+        () => E.left(['oops1']),
+        () => E.left(['oops2']),
+      ),
+    )
+    expect(result).toEqual(E.left(['oops2', 'oops1']))
   })
   describe('bifoldMap', () => {
     test('mapping', () => {
