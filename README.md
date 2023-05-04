@@ -51,7 +51,7 @@ pnpm add @jacob-alford/bifold-traverse
 
 ## Documentation
 
-- [@jacob-alford/bifold-traverse](https://jacob-alford.github.io/schemata-ts/docs/modules)
+- [@jacob-alford/bifold-traverse](https://jacob-alford.github.io/bifold-traverse/)
 - [fp-ts](https://gcanti.github.io/fp-ts/modules/)
 
 ## Explanation
