@@ -7,9 +7,9 @@ nav_order: 1
 
 # bifold-traverse
 
-[![NPM Version](https://badge.fury.io/js/@jacob-alford/bifold-traverse.svg)](https://badge.fury.io/js/@jacob-alford/bifold-traverse)
+[![NPM Version](https://badge.fury.io/js/@jacob-alford%2Fbifold-traverse.svg)](https://badge.fury.io/js/@jacob-alford%2Fbifold-traverse)
 [![Coverage Status](https://coveralls.io/repos/github/jacob-alford/bifold-traverse/badge.svg?branch=main)](https://coveralls.io/github/jacob-alford/bifold-traverse?branch=main)
-![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/@jacob-alford/bifold-traverse)
+![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/@jacob-alford%252fbifold-traverse)
 
 ## Welcome
 
@@ -33,7 +33,7 @@ yarn add @jacob-alford/bifold-traverse
 npm install @jacob-alford/bifold-traverse
 ```
 
-### pnpm
+### PNPM
 
 ```bash
 pnpm add @jacob-alford/bifold-traverse
