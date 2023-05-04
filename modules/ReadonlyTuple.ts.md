@@ -81,7 +81,11 @@ export declare const bisequence: {
   <F>(F: Applicative3<F>): <R, E, A, B>(
     fga: readonly [Kind3<F, R, E, B>, Kind3<F, R, E, A>]
   ) => Kind3<F, R, E, readonly [B, A]>
+  <F, E>(F: Applicative3C<F, E>): <R, A, B>(
+    fga: readonly [Kind3<F, R, E, B>, Kind3<F, R, E, A>]
+  ) => Kind3<F, R, E, readonly [B, A]>
   <F>(F: Applicative2<F>): <E, A, B>(fga: readonly [Kind2<F, E, B>, Kind2<F, E, A>]) => Kind2<F, E, readonly [B, A]>
+  <F, E>(F: Applicative2C<F, E>): <A, B>(fga: readonly [Kind2<F, E, B>, Kind2<F, E, A>]) => Kind2<F, E, readonly [B, A]>
   <F>(F: Applicative1<F>): <A, B>(fga: readonly [Kind<F, B>, Kind<F, A>]) => Kind<F, readonly [B, A]>
   <F>(F: Applicative<F>): <A, B>(fga: readonly [HKT<F, B>, HKT<F, A>]) => HKT<'ReadonlyTuple', readonly [B, A]>
 }

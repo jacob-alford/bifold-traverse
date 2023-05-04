@@ -82,7 +82,13 @@ export declare const bisequence: {
   <F>(F: Applicative3<F>): <R, E, A, B>(
     fga: Sep.Separated<Kind3<F, R, E, A>, Kind3<F, R, E, B>>
   ) => Kind3<F, R, E, Sep.Separated<A, B>>
+  <F, E>(F: Applicative3C<F, E>): <R, A, B>(
+    fga: Sep.Separated<Kind3<F, R, E, A>, Kind3<F, R, E, B>>
+  ) => Kind3<F, R, E, Sep.Separated<A, B>>
   <F>(F: Applicative2<F>): <E, A, B>(
+    fga: Sep.Separated<Kind2<F, E, A>, Kind2<F, E, B>>
+  ) => Kind2<F, E, Sep.Separated<A, B>>
+  <F, E>(F: Applicative2C<F, E>): <A, B>(
     fga: Sep.Separated<Kind2<F, E, A>, Kind2<F, E, B>>
   ) => Kind2<F, E, Sep.Separated<A, B>>
   <F>(F: Applicative1<F>): <A, B>(fga: Sep.Separated<Kind<F, A>, Kind<F, B>>) => Kind<F, Sep.Separated<A, B>>

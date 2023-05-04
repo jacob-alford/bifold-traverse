@@ -96,7 +96,11 @@ export declare const bisequence: {
   <F>(F: Applicative3<F>): <R, E, A, B>(
     fga: Th.These<Kind3<F, R, E, A>, Kind3<F, R, E, B>>
   ) => Kind3<F, R, E, Th.These<A, B>>
+  <F, E>(F: Applicative3C<F, E>): <R, A, B>(
+    fga: Th.These<Kind3<F, R, E, A>, Kind3<F, R, E, B>>
+  ) => Kind3<F, R, E, Th.These<A, B>>
   <F>(F: Applicative2<F>): <E, A, B>(fga: Th.These<Kind2<F, E, A>, Kind2<F, E, B>>) => Kind2<F, E, Th.These<A, B>>
+  <F, E>(F: Applicative2C<F, E>): <A, B>(fga: Th.These<Kind2<F, E, A>, Kind2<F, E, B>>) => Kind2<F, E, Th.These<A, B>>
   <F>(F: Applicative1<F>): <A, B>(fga: Th.These<Kind<F, A>, Kind<F, B>>) => Kind<F, Th.These<A, B>>
   <F>(F: Applicative<F>): <A, B>(fga: Th.These<HKT<F, A>, HKT<F, B>>) => HKT<'These', Th.These<A, B>>
 }

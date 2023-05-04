@@ -40,7 +40,15 @@ export type PipeableBitraverse<T extends URIS2> = {
     f: (a: A) => Kind3<F, R, E, C>,
     g: (b: B) => Kind3<F, R, E, D>
   ) => (fa: Kind2<T, A, B>) => Kind3<F, R, E, Kind2<T, C, D>>
+  <F extends URIS3, E>(F: Applicative3C<F, E>): <R, A, B, C, D>(
+    f: (a: A) => Kind3<F, R, E, C>,
+    g: (b: B) => Kind3<F, R, E, D>
+  ) => (fa: Kind2<T, A, B>) => Kind3<F, R, E, Kind2<T, C, D>>
   <F extends URIS2>(F: Applicative2<F>): <E, A, B, C, D>(
+    f: (a: A) => Kind2<F, E, C>,
+    g: (b: B) => Kind2<F, E, D>
+  ) => (fa: Kind2<T, A, B>) => Kind2<F, E, Kind2<T, C, D>>
+  <F extends URIS2, E>(F: Applicative2C<F, E>): <A, B, C, D>(
     f: (a: A) => Kind2<F, E, C>,
     g: (b: B) => Kind2<F, E, D>
   ) => (fa: Kind2<T, A, B>) => Kind2<F, E, Kind2<T, C, D>>
@@ -76,7 +84,17 @@ export interface Bitraversable<T> extends Bifoldable<T>, Bifunctor<T> {
       f: (a: A) => Kind3<F, R, E, C>,
       g: (b: B) => Kind3<F, R, E, D>
     ) => Kind3<F, R, E, HKT2<T, C, D>>
+    <F extends URIS3, E>(F: Applicative3C<F, E>): <R, A, B, C, D>(
+      fa: HKT2<T, A, B>,
+      f: (a: A) => Kind3<F, R, E, C>,
+      g: (b: B) => Kind3<F, R, E, D>
+    ) => Kind3<F, R, E, HKT2<T, C, D>>
     <F extends URIS2>(F: Applicative2<F>): <E, A, B, C, D>(
+      fa: HKT2<T, A, B>,
+      f: (a: A) => Kind2<F, E, C>,
+      g: (b: B) => Kind2<F, E, D>
+    ) => Kind2<F, E, HKT2<T, C, D>>
+    <F extends URIS2, E>(F: Applicative2C<F, E>): <A, B, C, D>(
       fa: HKT2<T, A, B>,
       f: (a: A) => Kind2<F, E, C>,
       g: (b: B) => Kind2<F, E, D>
@@ -99,7 +117,13 @@ export interface Bitraversable<T> extends Bifoldable<T>, Bifunctor<T> {
     <F extends URIS3>(F: Applicative3<F>): <R, E, A, B>(
       fga: HKT2<T, Kind3<F, R, E, A>, Kind3<F, R, E, B>>
     ) => Kind3<F, R, E, HKT2<T, A, B>>
+    <F extends URIS3, E>(F: Applicative3C<F, E>): <R, A, B>(
+      fga: HKT2<T, Kind3<F, R, E, A>, Kind3<F, R, E, B>>
+    ) => Kind3<F, R, E, HKT2<T, A, B>>
     <F extends URIS2>(F: Applicative2<F>): <E, A, B>(
+      fga: HKT2<T, Kind2<F, E, A>, Kind2<F, E, B>>
+    ) => Kind2<F, E, HKT2<T, A, B>>
+    <F extends URIS2, E>(F: Applicative2C<F, E>): <A, B>(
       fga: HKT2<T, Kind2<F, E, A>, Kind2<F, E, B>>
     ) => Kind2<F, E, HKT2<T, A, B>>
     <F extends URIS>(F: Applicative1<F>): <A, B>(fga: HKT2<T, Kind<F, A>, Kind<F, B>>) => Kind<F, HKT2<T, A, B>>
@@ -127,7 +151,17 @@ export interface Bitraversable2<T extends URIS2> extends Bifoldable2<T>, Bifunct
       f: (a: A) => Kind3<F, R, E, C>,
       g: (b: B) => Kind3<F, R, E, D>
     ) => Kind3<F, R, E, Kind2<T, C, D>>
+    <F extends URIS3, E>(F: Applicative3C<F, E>): <R, A, B, C, D>(
+      fa: Kind2<T, A, B>,
+      f: (a: A) => Kind3<F, R, E, C>,
+      g: (b: B) => Kind3<F, R, E, D>
+    ) => Kind3<F, R, E, Kind2<T, C, D>>
     <F extends URIS2>(F: Applicative2<F>): <E, A, B, C, D>(
+      fa: Kind2<T, A, B>,
+      f: (a: A) => Kind2<F, E, C>,
+      g: (b: B) => Kind2<F, E, D>
+    ) => Kind2<F, E, Kind2<T, C, D>>
+    <F extends URIS2, E>(F: Applicative2C<F, E>): <A, B, C, D>(
       fa: Kind2<T, A, B>,
       f: (a: A) => Kind2<F, E, C>,
       g: (b: B) => Kind2<F, E, D>
@@ -150,7 +184,13 @@ export interface Bitraversable2<T extends URIS2> extends Bifoldable2<T>, Bifunct
     <F extends URIS3>(F: Applicative3<F>): <R, E, A, B>(
       fga: Kind2<T, Kind3<F, R, E, A>, Kind3<F, R, E, B>>
     ) => Kind3<F, R, E, Kind2<T, A, B>>
+    <F extends URIS3, E>(F: Applicative3C<F, E>): <R, A, B>(
+      fga: Kind2<T, Kind3<F, R, E, A>, Kind3<F, R, E, B>>
+    ) => Kind3<F, R, E, Kind2<T, A, B>>
     <F extends URIS2>(F: Applicative2<F>): <E, A, B>(
+      fga: Kind2<T, Kind2<F, E, A>, Kind2<F, E, B>>
+    ) => Kind2<F, E, Kind2<T, A, B>>
+    <F extends URIS2, E>(F: Applicative2C<F, E>): <A, B>(
       fga: Kind2<T, Kind2<F, E, A>, Kind2<F, E, B>>
     ) => Kind2<F, E, Kind2<T, A, B>>
     <F extends URIS>(F: Applicative1<F>): <A, B>(fga: Kind2<T, Kind<F, A>, Kind<F, B>>) => Kind<F, Kind2<T, A, B>>
