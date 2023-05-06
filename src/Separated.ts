@@ -7,6 +7,8 @@ import { bifold as bifold_, Bifoldable2 } from '@jacob-alford/bifold-traverse/Bi
 import {
   Bitraversable2,
   PipeableBitraverse,
+  traverseLeft as traverseLeft_,
+  traverseRight as traverseRight_,
 } from '@jacob-alford/bifold-traverse/Bitraversable'
 import { Applicative } from 'fp-ts/Applicative'
 import { identity } from 'fp-ts/function'
@@ -223,3 +225,15 @@ export const Bitraversable: Bitraversable2<Sep.URI> = {
  * @category Utilities
  */
 export const bifold = bifold_(Bifoldable)
+
+/**
+ * @since 1.1.0
+ * @category Utilities
+ */
+export const traverseLeft = traverseLeft_(Bitraversable)
+
+/**
+ * @since 1.1.0
+ * @category Utilities
+ */
+export const traverseRight = traverseRight_(Bitraversable)

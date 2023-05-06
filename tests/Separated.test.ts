@@ -11,6 +11,8 @@ import {
   bireduceRight,
   bisequence,
   bitraverse,
+  traverseLeft,
+  traverseRight,
 } from '../src/Separated'
 
 describe('Separated', () => {
@@ -109,5 +111,19 @@ describe('Separated', () => {
       )
       expect(test).toEqual('abtest')
     })
+  })
+  test('traverseLeft', () => {
+    const test = pipe(
+      Sep.separated('test', 'test'),
+      traverseLeft(O.Applicative)(() => O.none),
+    )
+    expect(test).toEqual(O.none)
+  })
+  test('traverseRight', () => {
+    const test = pipe(
+      Sep.separated('test', 'test'),
+      traverseRight(O.Applicative)(() => O.none),
+    )
+    expect(test).toEqual(O.none)
   })
 })
