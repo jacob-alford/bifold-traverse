@@ -13,6 +13,8 @@ import {
   bireduceRight,
   bisequence,
   bitraverse,
+  traverseFst,
+  traverseSnd,
 } from '../src/ReadonlyTuple'
 
 describe('These', () => {
@@ -136,5 +138,19 @@ describe('These', () => {
       )
       expect(_).toEqual('batest')
     })
+  })
+  test('traverseFst', () => {
+    const _ = pipe(
+      tuple('a', 'b'),
+      traverseFst(O.Applicative)(() => O.none),
+    )
+    expect(_).toEqual(O.none)
+  })
+  test('traverseSnd', () => {
+    const _ = pipe(
+      tuple('a', 'b'),
+      traverseSnd(O.Applicative)(() => O.none),
+    )
+    expect(_).toEqual(O.none)
   })
 })
