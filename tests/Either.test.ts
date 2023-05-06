@@ -1,8 +1,9 @@
 import * as E from 'fp-ts/Either'
+import { pipe } from 'fp-ts/function'
 import * as O from 'fp-ts/Option'
 import * as Str from 'fp-ts/string'
 
-import { Bifoldable, bisequence, bitraverse } from '../src/Either'
+import { Bifoldable, bisequence, bitraverse, traverseLeft } from '../src/Either'
 
 describe('Either', () => {
   describe('bisequence', () => {
@@ -93,6 +94,22 @@ describe('Either', () => {
         b => b,
       )
       expect(test).toEqual('test1')
+    })
+  })
+  describe('traverseLeft', () => {
+    test('right', () => {
+      const test = pipe(
+        E.right('test'),
+        traverseLeft(O.Applicative)(() => O.none),
+      )
+      expect(test).toEqual(O.some(E.right('test')))
+    })
+    test('left', () => {
+      const test = pipe(
+        E.left('test'),
+        traverseLeft(O.Applicative)(() => O.none),
+      )
+      expect(test).toEqual(O.none)
     })
   })
 })

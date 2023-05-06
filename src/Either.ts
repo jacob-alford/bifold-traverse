@@ -9,6 +9,7 @@ import { Bifoldable2 } from '@jacob-alford/bifold-traverse/Bifoldable'
 import {
   Bitraversable2,
   PipeableBitraverse,
+  traverseLeft as traverseLeft_,
 } from '@jacob-alford/bifold-traverse/Bitraversable'
 import { Applicative } from 'fp-ts/Applicative'
 import * as E from 'fp-ts/Either'
@@ -134,3 +135,13 @@ export const Bitraversable: Bitraversable2<E.URI> = {
   bisequence,
   bitraverse: bitraverse_,
 }
+
+// -------------------------------------------------------------------------------------
+// Utilities
+// -------------------------------------------------------------------------------------
+
+/**
+ * @since 1.1.0
+ * @category Utilities
+ */
+export const traverseLeft = traverseLeft_(Bitraversable)
