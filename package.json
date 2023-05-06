@@ -1,6 +1,6 @@
 {
   "name": "@jacob-alford/bifold-traverse",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A bifoldable/bitraversable library for fp-ts v2",
   "homepage": "https://jacob-alford.github.io/bifold-traverse/",
   "repository": {
