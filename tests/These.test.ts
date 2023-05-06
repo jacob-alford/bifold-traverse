@@ -10,6 +10,7 @@ import {
   bireduceRight,
   bisequence,
   bitraverse,
+  traverseLeft,
 } from '../src/These'
 
 describe('These', () => {
@@ -193,6 +194,29 @@ describe('These', () => {
         ),
       )
       expect(test).toEqual('test1test2test3')
+    })
+  })
+  describe('traverseLeft', () => {
+    test('Right', () => {
+      const test = pipe(
+        Th.right('test'),
+        traverseLeft(O.Applicative)(() => O.none),
+      )
+      expect(test).toEqual(O.some(Th.right('test')))
+    })
+    test('Left', () => {
+      const test = pipe(
+        Th.left('test'),
+        traverseLeft(O.Applicative)(() => O.none),
+      )
+      expect(test).toEqual(O.none)
+    })
+    test('Both', () => {
+      const test = pipe(
+        Th.both('test', 'test'),
+        traverseLeft(O.Applicative)(() => O.some('abc')),
+      )
+      expect(test).toEqual(O.some(Th.both('abc', 'test')))
     })
   })
 })
