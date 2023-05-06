@@ -22,6 +22,8 @@ Added in v1.0.0
 - [Instances](#instances)
   - [Bifoldable](#bifoldable)
   - [Bitraversable](#bitraversable)
+- [Utilities](#utilities)
+  - [traverseLeft](#traverseleft)
 
 ---
 
@@ -113,3 +115,33 @@ export declare const Bitraversable: Bitraversable2<'Either'>
 ```
 
 Added in v1.0.0
+
+# Utilities
+
+## traverseLeft
+
+**Signature**
+
+```ts
+export declare const traverseLeft: {
+  <F>(F: Applicative4<F>): <S, R, E, A, B>(
+    f: (a: A) => Kind4<F, S, R, E, B>
+  ) => <C>(ta: E.Either<A, C>) => Kind4<F, S, R, E, E.Either<B, C>>
+  <F>(F: Applicative3<F>): <R, E, A, B>(
+    f: (a: A) => Kind3<F, R, E, B>
+  ) => <C>(ta: E.Either<A, C>) => Kind3<F, R, E, E.Either<B, C>>
+  <F, E>(F: Applicative3C<F, E>): <R, A, B>(
+    f: (a: A) => Kind3<F, R, E, B>
+  ) => <C>(ta: E.Either<A, C>) => Kind3<F, R, E, E.Either<B, C>>
+  <F>(F: Applicative2<F>): <E, A, B>(
+    f: (a: A) => Kind2<F, E, B>
+  ) => <C>(ta: E.Either<A, C>) => Kind2<F, E, E.Either<B, C>>
+  <F, E>(F: Applicative2C<F, E>): <A, B>(
+    f: (a: A) => Kind2<F, E, B>
+  ) => <C>(ta: E.Either<A, C>) => Kind2<F, E, E.Either<B, C>>
+  <F>(F: Applicative1<F>): <A, B>(f: (a: A) => Kind<F, B>) => <C>(ta: E.Either<A, C>) => Kind<F, E.Either<B, C>>
+  <F>(F: Applicative<F>): <A, B>(f: (a: A) => HKT<F, B>) => <C>(ta: E.Either<A, C>) => HKT<F, E.Either<B, C>>
+}
+```
+
+Added in v1.1.0

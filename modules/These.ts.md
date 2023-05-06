@@ -25,6 +25,7 @@ Added in v1.0.0
   - [Bitraversable](#bitraversable)
 - [Utilities](#utilities)
   - [bifold](#bifold)
+  - [traverseLeft](#traverseleft)
 
 ---
 
@@ -151,3 +152,31 @@ export declare const bifold: <M>(M: Monoid<M>) => (fa: Th.These<M, M>) => M
 ```
 
 Added in v1.0.0
+
+## traverseLeft
+
+**Signature**
+
+```ts
+export declare const traverseLeft: {
+  <F>(F: Applicative4<F>): <S, R, E, A, B>(
+    f: (a: A) => Kind4<F, S, R, E, B>
+  ) => <C>(ta: Th.These<A, C>) => Kind4<F, S, R, E, Th.These<B, C>>
+  <F>(F: Applicative3<F>): <R, E, A, B>(
+    f: (a: A) => Kind3<F, R, E, B>
+  ) => <C>(ta: Th.These<A, C>) => Kind3<F, R, E, Th.These<B, C>>
+  <F, E>(F: Applicative3C<F, E>): <R, A, B>(
+    f: (a: A) => Kind3<F, R, E, B>
+  ) => <C>(ta: Th.These<A, C>) => Kind3<F, R, E, Th.These<B, C>>
+  <F>(F: Applicative2<F>): <E, A, B>(
+    f: (a: A) => Kind2<F, E, B>
+  ) => <C>(ta: Th.These<A, C>) => Kind2<F, E, Th.These<B, C>>
+  <F, E>(F: Applicative2C<F, E>): <A, B>(
+    f: (a: A) => Kind2<F, E, B>
+  ) => <C>(ta: Th.These<A, C>) => Kind2<F, E, Th.These<B, C>>
+  <F>(F: Applicative1<F>): <A, B>(f: (a: A) => Kind<F, B>) => <C>(ta: Th.These<A, C>) => Kind<F, Th.These<B, C>>
+  <F>(F: Applicative<F>): <A, B>(f: (a: A) => HKT<F, B>) => <C>(ta: Th.These<A, C>) => HKT<F, Th.These<B, C>>
+}
+```
+
+Added in v1.1.0

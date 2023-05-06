@@ -25,6 +25,8 @@ Added in v1.0.0
   - [Bitraversable](#bitraversable)
 - [Utilities](#utilities)
   - [bifold](#bifold)
+  - [traverseFst](#traversefst)
+  - [traverseSnd](#traversesnd)
 
 ---
 
@@ -136,3 +138,59 @@ export declare const bifold: <M>(M: Monoid<M>) => (fa: readonly [M, M]) => M
 ```
 
 Added in v1.0.0
+
+## traverseFst
+
+**Signature**
+
+```ts
+export declare const traverseFst: {
+  <F>(F: Applicative4<F>): <S, R, E, B, C>(
+    g: (b: B) => Kind4<F, S, R, E, C>
+  ) => <A>(ta: readonly [B, A]) => Kind4<F, S, R, E, readonly [C, A]>
+  <F>(F: Applicative3<F>): <R, E, B, C>(
+    g: (b: B) => Kind3<F, R, E, C>
+  ) => <A>(ta: readonly [B, A]) => Kind3<F, R, E, readonly [C, A]>
+  <F, E>(F: Applicative3C<F, E>): <R, B, C>(
+    g: (b: B) => Kind3<F, R, E, C>
+  ) => <A>(ta: readonly [B, A]) => Kind3<F, R, E, readonly [C, A]>
+  <F>(F: Applicative2<F>): <E, B, C>(
+    g: (b: B) => Kind2<F, E, C>
+  ) => <A>(ta: readonly [B, A]) => Kind2<F, E, readonly [C, A]>
+  <F, E>(F: Applicative2C<F, E>): <B, C>(
+    g: (b: B) => Kind2<F, E, C>
+  ) => <A>(ta: readonly [B, A]) => Kind2<F, E, readonly [C, A]>
+  <F>(F: Applicative1<F>): <B, C>(g: (b: B) => Kind<F, C>) => <A>(ta: readonly [B, A]) => Kind<F, readonly [C, A]>
+  <F>(F: Applicative<F>): <B, C>(g: (b: B) => HKT<F, C>) => <A>(ta: readonly [B, A]) => HKT<F, readonly [C, A]>
+}
+```
+
+Added in v1.1.0
+
+## traverseSnd
+
+**Signature**
+
+```ts
+export declare const traverseSnd: {
+  <F>(F: Applicative4<F>): <S, R, E, A, B>(
+    f: (a: A) => Kind4<F, S, R, E, B>
+  ) => <C>(ta: readonly [C, A]) => Kind4<F, S, R, E, readonly [C, B]>
+  <F>(F: Applicative3<F>): <R, E, A, B>(
+    f: (a: A) => Kind3<F, R, E, B>
+  ) => <C>(ta: readonly [C, A]) => Kind3<F, R, E, readonly [C, B]>
+  <F, E>(F: Applicative3C<F, E>): <R, A, B>(
+    f: (a: A) => Kind3<F, R, E, B>
+  ) => <C>(ta: readonly [C, A]) => Kind3<F, R, E, readonly [C, B]>
+  <F>(F: Applicative2<F>): <E, A, B>(
+    f: (a: A) => Kind2<F, E, B>
+  ) => <C>(ta: readonly [C, A]) => Kind2<F, E, readonly [C, B]>
+  <F, E>(F: Applicative2C<F, E>): <A, B>(
+    f: (a: A) => Kind2<F, E, B>
+  ) => <C>(ta: readonly [C, A]) => Kind2<F, E, readonly [C, B]>
+  <F>(F: Applicative1<F>): <A, B>(f: (a: A) => Kind<F, B>) => <C>(ta: readonly [C, A]) => Kind<F, readonly [C, B]>
+  <F>(F: Applicative<F>): <A, B>(f: (a: A) => HKT<F, B>) => <C>(ta: readonly [C, A]) => HKT<F, readonly [C, B]>
+}
+```
+
+Added in v1.1.0

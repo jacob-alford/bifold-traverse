@@ -25,6 +25,8 @@ Added in v1.0.0
   - [Bitraversable](#bitraversable)
 - [Utilities](#utilities)
   - [bifold](#bifold)
+  - [traverseLeft](#traverseleft)
+  - [traverseRight](#traverseright)
 
 ---
 
@@ -228,3 +230,63 @@ export declare const bifold: <M>(M: Monoid<M>) => (fa: Sep.Separated<M, M>) => M
 ```
 
 Added in v1.0.0
+
+## traverseLeft
+
+**Signature**
+
+```ts
+export declare const traverseLeft: {
+  <F>(F: Applicative4<F>): <S, R, E, A, B>(
+    f: (a: A) => Kind4<F, S, R, E, B>
+  ) => <C>(ta: Sep.Separated<A, C>) => Kind4<F, S, R, E, Sep.Separated<B, C>>
+  <F>(F: Applicative3<F>): <R, E, A, B>(
+    f: (a: A) => Kind3<F, R, E, B>
+  ) => <C>(ta: Sep.Separated<A, C>) => Kind3<F, R, E, Sep.Separated<B, C>>
+  <F, E>(F: Applicative3C<F, E>): <R, A, B>(
+    f: (a: A) => Kind3<F, R, E, B>
+  ) => <C>(ta: Sep.Separated<A, C>) => Kind3<F, R, E, Sep.Separated<B, C>>
+  <F>(F: Applicative2<F>): <E, A, B>(
+    f: (a: A) => Kind2<F, E, B>
+  ) => <C>(ta: Sep.Separated<A, C>) => Kind2<F, E, Sep.Separated<B, C>>
+  <F, E>(F: Applicative2C<F, E>): <A, B>(
+    f: (a: A) => Kind2<F, E, B>
+  ) => <C>(ta: Sep.Separated<A, C>) => Kind2<F, E, Sep.Separated<B, C>>
+  <F>(F: Applicative1<F>): <A, B>(
+    f: (a: A) => Kind<F, B>
+  ) => <C>(ta: Sep.Separated<A, C>) => Kind<F, Sep.Separated<B, C>>
+  <F>(F: Applicative<F>): <A, B>(f: (a: A) => HKT<F, B>) => <C>(ta: Sep.Separated<A, C>) => HKT<F, Sep.Separated<B, C>>
+}
+```
+
+Added in v1.1.0
+
+## traverseRight
+
+**Signature**
+
+```ts
+export declare const traverseRight: {
+  <F>(F: Applicative4<F>): <S, R, E, B, C>(
+    g: (b: B) => Kind4<F, S, R, E, C>
+  ) => <A>(ta: Sep.Separated<A, B>) => Kind4<F, S, R, E, Sep.Separated<A, C>>
+  <F>(F: Applicative3<F>): <R, E, B, C>(
+    g: (b: B) => Kind3<F, R, E, C>
+  ) => <A>(ta: Sep.Separated<A, B>) => Kind3<F, R, E, Sep.Separated<A, C>>
+  <F, E>(F: Applicative3C<F, E>): <R, B, C>(
+    g: (b: B) => Kind3<F, R, E, C>
+  ) => <A>(ta: Sep.Separated<A, B>) => Kind3<F, R, E, Sep.Separated<A, C>>
+  <F>(F: Applicative2<F>): <E, B, C>(
+    g: (b: B) => Kind2<F, E, C>
+  ) => <A>(ta: Sep.Separated<A, B>) => Kind2<F, E, Sep.Separated<A, C>>
+  <F, E>(F: Applicative2C<F, E>): <B, C>(
+    g: (b: B) => Kind2<F, E, C>
+  ) => <A>(ta: Sep.Separated<A, B>) => Kind2<F, E, Sep.Separated<A, C>>
+  <F>(F: Applicative1<F>): <B, C>(
+    g: (b: B) => Kind<F, C>
+  ) => <A>(ta: Sep.Separated<A, B>) => Kind<F, Sep.Separated<A, C>>
+  <F>(F: Applicative<F>): <B, C>(g: (b: B) => HKT<F, C>) => <A>(ta: Sep.Separated<A, B>) => HKT<F, Sep.Separated<A, C>>
+}
+```
+
+Added in v1.1.0

@@ -19,6 +19,9 @@ Added in v1.0.0
 - [Typeclass](#typeclass)
   - [Bitraversable (interface)](#bitraversable-interface)
   - [Bitraversable2 (interface)](#bitraversable2-interface)
+- [Utilities](#utilities)
+  - [traverseLeft](#traverseleft)
+  - [traverseRight](#traverseright)
 
 ---
 
@@ -200,3 +203,69 @@ export interface Bitraversable2<T extends URIS2> extends Bifoldable2<T>, Bifunct
 ```
 
 Added in v1.0.0
+
+# Utilities
+
+## traverseLeft
+
+**Signature**
+
+```ts
+export declare function traverseLeft<T extends URIS2>(
+  T: Bitraversable2<T>
+): {
+  <F extends URIS4>(F: Applicative4<F>): <S, R, E, A, B>(
+    f: (a: A) => Kind4<F, S, R, E, B>
+  ) => <C>(ta: Kind2<T, A, C>) => Kind4<F, S, R, E, Kind2<T, B, C>>
+  <F extends URIS3>(F: Applicative3<F>): <R, E, A, B>(
+    f: (a: A) => Kind3<F, R, E, B>
+  ) => <C>(ta: Kind2<T, A, C>) => Kind3<F, R, E, Kind2<T, B, C>>
+  <F extends URIS3, E>(F: Applicative3C<F, E>): <R, A, B>(
+    f: (a: A) => Kind3<F, R, E, B>
+  ) => <C>(ta: Kind2<T, A, C>) => Kind3<F, R, E, Kind2<T, B, C>>
+  <F extends URIS2>(F: Applicative2<F>): <E, A, B>(
+    f: (a: A) => Kind2<F, E, B>
+  ) => <C>(ta: Kind2<T, A, C>) => Kind2<F, E, Kind2<T, B, C>>
+  <F extends URIS2, E>(F: Applicative2C<F, E>): <A, B>(
+    f: (a: A) => Kind2<F, E, B>
+  ) => <C>(ta: Kind2<T, A, C>) => Kind2<F, E, Kind2<T, B, C>>
+  <F extends URIS>(F: Applicative1<F>): <A, B>(
+    f: (a: A) => Kind<F, B>
+  ) => <C>(ta: Kind2<T, A, C>) => Kind<F, Kind2<T, B, C>>
+  <F>(F: Applicative<F>): <A, B>(f: (a: A) => HKT<F, B>) => <C>(ta: Kind2<T, A, C>) => HKT<F, Kind2<T, B, C>>
+}
+```
+
+Added in v1.1.0
+
+## traverseRight
+
+**Signature**
+
+```ts
+export declare function traverseRight<T extends URIS2>(
+  T: Bitraversable2<T>
+): {
+  <F extends URIS4>(F: Applicative4<F>): <S, R, E, B, C>(
+    g: (b: B) => Kind4<F, S, R, E, C>
+  ) => <A>(ta: Kind2<T, A, B>) => Kind4<F, S, R, E, Kind2<T, A, C>>
+  <F extends URIS3>(F: Applicative3<F>): <R, E, B, C>(
+    g: (b: B) => Kind3<F, R, E, C>
+  ) => <A>(ta: Kind2<T, A, B>) => Kind3<F, R, E, Kind2<T, A, C>>
+  <F extends URIS3, E>(F: Applicative3C<F, E>): <R, B, C>(
+    g: (b: B) => Kind3<F, R, E, C>
+  ) => <A>(ta: Kind2<T, A, B>) => Kind3<F, R, E, Kind2<T, A, C>>
+  <F extends URIS2>(F: Applicative2<F>): <E, B, C>(
+    g: (b: B) => Kind2<F, E, C>
+  ) => <A>(ta: Kind2<T, A, B>) => Kind2<F, E, Kind2<T, A, C>>
+  <F extends URIS2, E>(F: Applicative2C<F, E>): <B, C>(
+    g: (b: B) => Kind2<F, E, C>
+  ) => <A>(ta: Kind2<T, A, B>) => Kind2<F, E, Kind2<T, A, C>>
+  <F extends URIS>(F: Applicative1<F>): <B, C>(
+    g: (b: B) => Kind<F, C>
+  ) => <A>(ta: Kind2<T, A, B>) => Kind<F, Kind2<T, A, C>>
+  <F>(F: Applicative<F>): <B, C>(g: (b: B) => HKT<F, C>) => <A>(ta: Kind2<T, A, B>) => HKT<F, Kind2<T, A, C>>
+}
+```
+
+Added in v1.1.0
